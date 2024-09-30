@@ -2,17 +2,11 @@
   "name": "Push Variables",
   "id": "xxx",
   "api": "1.0.0",
-  "main": "code.js",
-  "capabilities": [],
-  "enableProposedApi": false,
-  "documentAccess": "dynamic-page",
-  "editorType": [
-    "figma"
-  ],
-  "ui": "ui.html",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma", "figjam"],
   "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
-  }
+    "allowedDomains": ["none"]
+  },
+  "documentAccess": "dynamic-page"
 }
