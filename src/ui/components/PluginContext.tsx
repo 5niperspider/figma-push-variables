@@ -6,19 +6,34 @@ import React, {
     useState
   } from "react";
 
+export interface IVariable{
+  id: string,
+  name: string,
+  type: string,
+  collection: string,
+  group: string,
+  values: any[],
+  selected: boolean
+};
+
 type PluginContextProviderProps = {
-  test: string;
-  setTest: Dispatch<SetStateAction<string>>;
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
+  variables: IVariable[];
+  setVariables: Dispatch<SetStateAction<IVariable[]>>;
 };
 
 const PluginContext = createContext<PluginContextProviderProps>(null!);
   
 export const PluginContextProvider = ({ children }: any) => {
-    const [test, setTest] = useState<string>(null!);
+    const [search, setSearch] = useState<string>(null!);
+    const [variables, setVariables] = useState<IVariable[]>(null!);
 
     const sharedState = {
-      test,
-      setTest,
+      search,
+      setSearch,
+      variables,
+      setVariables
     };
 
     return (
