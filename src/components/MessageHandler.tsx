@@ -1,5 +1,5 @@
 import React from "react";
-import { usePluginContext } from "./PluginContext";
+import { usePluginContext } from "../Context/PluginContext";
 
 export const MessageHandler = () => {
     const pluginContext = usePluginContext();
@@ -11,7 +11,7 @@ export const MessageHandler = () => {
     switch (message.type) {
       case 'errors': {
         break
-      }
+        }
       default: {
         console.log(`UI-MessageHandler: messagetype ${msg.type} not supported`)
         break

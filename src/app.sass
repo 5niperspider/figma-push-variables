@@ -1,0 +1,57 @@
+// Define the font faces
+@font-face
+  font-family: 'Inter'
+  font-style: normal
+  font-weight: 400
+  font-display: swap
+  src: local('Inter'), url('./assets/Inter-Regular.ttf') format('truetype')
+
+@font-face
+  font-family: 'Inter-Bold'
+  font-style: normal
+  font-weight: 900
+  font-display: swap
+  src: local('Inter-Bold'), url('./assets/Inter-Bold.ttf') format('truetype')
+
+
+  
+:root
+  --primary-color: #0078D6
+  --background-color: #F9F9F9
+  --danger-color: #F04438
+  --black-color: #1a1a1a
+  --grey-color: #999
+  --grey-border-color: #D9D9D9
+  --dark-blue-highlight-color: var(--primary-700, #004780)
+  --light-blue-highlight-color: #ddeefb
+  --yellow-highlight-color: #fef0c7
+  --color-bg: white
+  --color-text: #1a1a1a
+
+html,
+body,
+main
+  height: 100%
+  width: 100%
+  background: white
+
+body,
+input,
+textarea,
+button
+  font-family: Inter
+  font-size: 0.75rem !important
+  letter-spacing: 0.5px
+
+body
+  background: var(--color-bg)
+  color: var(--color-text)
+  margin: 0
+
+main
+  align-items: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+  letter-spacing: 0.5px
+  

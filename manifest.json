@@ -1,12 +1,10 @@
 {
   "name": "Push Variables",
   "id": "xxx",
+  "enablePrivatePluginApi": true,
   "api": "1.0.0",
+  "editorType": ["figma", "dev"],
+  "capabilities": ["inspect"],
   "main": "dist/code.js",
-  "ui": "dist/ui.html",
-  "editorType": ["figma", "figjam"],
-  "networkAccess": {
-    "allowedDomains": ["none"]
-  },
-  "documentAccess": "dynamic-page"
+  "ui": "dist/index.html"
 }
