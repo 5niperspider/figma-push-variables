@@ -1,4 +1,18 @@
+import { generateCSS } from "./components/generateCSS";
 import { messageHandler } from "./components/messagehandler";
+
+export type ISorted = {
+  [key: string]: IMode
+}
+
+export type IMode = {
+  [key: string]: IVariable
+}
+
+export type IVariable = {
+  type: string,
+  value: string,
+}
 
 figma.showUI(__html__, { themeColors: true, height: 400, width: 600 });
 
@@ -7,15 +21,11 @@ figma.ui.onmessage = (msg) => {
 };
 
 figma.on("run", async () => {
-  const vars = await getFigmaVariables()
-  console.log(vars)
-  const code = generateCSS(vars)
-  console.log(code)
 });
 
-async function getFigmaVariables() {
+export async function getFigmaVariables() {
   const variables = await figma.variables.getLocalVariablesAsync(); // Fetch all local variable names
-  const cssVariables: any = {};
+  const cssVariables: ISorted = {};
 
   for (const variable of variables) {
     const collection = await figma.variables.getVariableCollectionByIdAsync(variable.variableCollectionId)
@@ -33,26 +43,11 @@ async function getFigmaVariables() {
 
       const varName = variable.name.split("/").map((string) => string.replace(/\W+/g, "")).join('-')
 
-      cssVariables[modeName][varName] = value;
+      cssVariables[modeName][varName] = {type: variable.resolvedType, value: value};
     })
   }
 
   return cssVariables;
-}
-
-function generateCSS(cssVariables: any) {
-  console.log(cssVariables)
-  let cssCode = ':root {\n';
-
-
-  for (const mode in cssVariables) {
-    for (const variable in cssVariables[mode]) {
-      cssCode += `--${mode}-${variable}: ${cssVariables[mode][variable]};\n`;
-    }
-  }
-  
-  cssCode += '}\n';
-  return cssCode;
 }
 
 function rgbaToHex(rgba: any) {
@@ -74,3 +69,4 @@ function rgbaToHex(rgba: any) {
   // Concatenate to form the final hex color
   return `#${hexR}${hexG}${hexB}${hexA}`;
 }
+

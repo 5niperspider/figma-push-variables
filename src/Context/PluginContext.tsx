@@ -7,34 +7,34 @@ import {
   useState
 } from "react";
 
-export interface INode {
-  id: string;
-  name: string;
-  parent: { id: string };
-  type: string;
-}
-
-export interface IUser {
-  color?: string;
-  id: string;
-  name: string;
-  photoUrl?: string;
-  sessionId: number;
-}
-
 type PluginContextProviderProps = {
-  test: string;
-  setTest: Dispatch<SetStateAction<string>>;
+  data: string;
+  setData: Dispatch<SetStateAction<string>>;
+  type: string;
+  setType: Dispatch<SetStateAction<string>>;
+  view: boolean;
+  setView: Dispatch<SetStateAction<boolean>>;
+  platform: string;
+  setPlatform: Dispatch<SetStateAction<string>>;
 };
 
 const PluginContext = createContext<PluginContextProviderProps>(null!);
 
 export const PluginContextProvider = ({ children }: any) => {
-  const [test,setTest] = useState<string>(null!);
+  const [data, setData] = useState<string>("");
+  const [type, setType] = useState<string>("");
+  const [view, setView] = useState<boolean>(false);
+  const [platform, setPlatform] = useState<string>("");
 
   const sharedState: any = {
-    test,
-    setTest
+    data,
+    setData,
+    type,
+    setType,
+    view,
+    setView,
+    platform,
+    setPlatform
   };
 
   return (

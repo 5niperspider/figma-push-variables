@@ -1,13 +1,11 @@
-import { ISorted } from "../code";
-
-export function generateCSS(cssVariables: ISorted) {
+export function generateCSS(cssVariables: any) {
     console.log(cssVariables)
     let cssCode = ':root {\n';
   
   
     for (const mode in cssVariables) {
       for (const variable in cssVariables[mode]) {
-        cssCode += `--${mode}-${variable}: ${cssVariables[mode][variable].value};\n`;
+        cssCode += `--${mode}-${variable}: ${cssVariables[mode][variable]};\n`;
       }
     }
     

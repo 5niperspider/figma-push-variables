@@ -9,7 +9,10 @@ export const MessageHandler = () => {
     console.log('UI got message', message);
 
     switch (message.type) {
-      case 'errors': {
+      case 'css': {
+        pluginContext.setType("text/css")
+        pluginContext.setData(message.data)
+        pluginContext.setView(true)
         break
         }
       default: {

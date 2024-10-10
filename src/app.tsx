@@ -1,5 +1,11 @@
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import "./app.sass";
+import { Box, Button } from "@mui/material";
+import { usePluginContext } from "./Context/PluginContext";
+import { DownloadButtons } from "./components/DownloadButtons/DownloadButtons";
+import { PlattformSelect } from "./components/PlattformSelect";
+import { GenerateView } from "./components/View/GenerateView";
+import { UploadView } from "./components/View/UploadView";
 
 export const styles: any = {
   main: {
@@ -48,12 +54,21 @@ export const styles: any = {
 };
 
 function App() {
+  const pluginContext = usePluginContext();
 
   useEffect(() => {}, []);
 
+  const onClick = () => {
+    parent.postMessage({pluginMessage: {type: pluginContext.platform}}, '*')
+  }
+
   return (
     <main style={styles.main}>
-      hi
+      {pluginContext.view == false ?
+        <GenerateView />
+        :
+        <UploadView />
+      }
     </main>
   );
 }
