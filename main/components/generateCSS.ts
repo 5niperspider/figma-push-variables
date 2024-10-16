@@ -7,7 +7,8 @@ export function generateCSS(cssVariables: ISorted) {
   
     for (const mode in cssVariables) {
       for (const variable in cssVariables[mode]) {
-        cssCode += `--${mode}-${variable}: ${cssVariables[mode][variable].value};\n`;
+        const varName = variable.split("/").map((string) => string.replace(/\W+/g, "")).join('-')
+        cssCode += `--${mode}-${varName}: ${cssVariables[mode][variable].value};\n`;
       }
     }
     

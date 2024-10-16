@@ -14,7 +14,13 @@ export const MessageHandler = () => {
         pluginContext.setData(message.data)
         pluginContext.setView(true)
         break
-        }
+      }
+      case 'android': {
+        pluginContext.setType("text/xml")
+        pluginContext.setData(message.data)
+        pluginContext.setView(true)
+        break
+      }
       default: {
         console.log(`UI-MessageHandler: messagetype ${msg.type} not supported`)
         break

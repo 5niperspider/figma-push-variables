@@ -4,9 +4,10 @@ import azure from '../../assets/azure.png'
 
 export const AzureButton = (props: {disabled?: boolean}) => {
     const pluginContext = usePluginContext();
+    const opacity = props.disabled ? 0.6 : 1
 
     return (
-        <Button disabled={props.disabled}>
+        <Button disabled={props.disabled} style={{opacity: opacity}}>
             <Box
                 display="flex"
                 alignItems="center"

@@ -41,9 +41,7 @@ export async function getFigmaVariables() {
         value = rgbaToHex(value)
       }
 
-      const varName = variable.name.split("/").map((string) => string.replace(/\W+/g, "")).join('-')
-
-      cssVariables[modeName][varName] = {type: variable.resolvedType, value: value};
+      cssVariables[modeName][variable.name] = {type: variable.resolvedType, value: value};
     })
   }
 
