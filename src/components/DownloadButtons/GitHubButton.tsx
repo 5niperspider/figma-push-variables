@@ -1,8 +1,6 @@
 import { Box, Button, FormControl, FormHelperText, Input, InputLabel, Modal, TextField, Typography } from "@mui/material";
 import { usePluginContext } from "../../Context/PluginContext";
 import github from '../../assets/github-mark.png'
-import { Octokit } from "@octokit/rest";
-import { Base64 } from "js-base64";
 import { createGithubCommit } from "../../service/github";
 import { useState } from "react";
 
@@ -13,7 +11,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: 4,
   boxShadow: 24,
   p: 4,
 };
@@ -71,11 +69,11 @@ export const GitHubButton = (props: {disabled?: boolean}) => {
             <Typography id="modal-modal-title" variant="h6" component="h2">
               GitHub
             </Typography>
-            <TextField label="accessToken" onChange={(event)=>{setAccessToken(event.target.value)}}/>
-            <TextField label="repoName" onChange={(event)=>{setRepo(event.target.value)}}/>
-            <TextField label="branch" onChange={(event)=>{setBranch(event.target.value)}}/>
-            <TextField label="commitTitle" onChange={(event)=>{setCommit(event.target.value)}}/>
-            <TextField label="path" onChange={(event)=>{setPath(event.target.value)}}/>
+            <TextField size="small" fullWidth onChange={(event)=>{setAccessToken(event.target.value)}} label="Access Token" type={"password"}/>
+            <TextField size="small" fullWidth onChange={(event)=>{setRepo(event.target.value)}} label="Repository Name"/>
+            <TextField size="small" fullWidth onChange={(event)=>{setBranch(event.target.value)}} label="Branch"/>
+            <TextField size="small" fullWidth onChange={(event)=>{setCommit(event.target.value)}} label="Commit Title"/>
+            <TextField size="small" fullWidth onChange={(event)=>{setPath(event.target.value)}} label="Filepath"/>
             <Button onClick={send}>Push</Button>
           </Box>
         </Modal>
