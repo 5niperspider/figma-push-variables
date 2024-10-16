@@ -27,7 +27,7 @@ export const DownloadButtons = () => {
             alignItems="center"
             flexDirection={"row"}
         >
-            <GitHubButton disabled={true} />
+            <GitHubButton disabled={false} />
             <AzureButton disabled={true} />
             <AWSButton disabled={true} />
         </Box>
