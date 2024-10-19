@@ -4,7 +4,7 @@
   "enablePrivatePluginApi": true,
   "api": "1.0.0",
   "editorType": ["figma", "dev"],
-  "capabilities": ["inspect"],
+  "capabilities": ["vscode"],
   "main": "dist/code.js",
   "ui": "dist/index.html"
 }
