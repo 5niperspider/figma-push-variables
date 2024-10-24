@@ -1,7 +1,11 @@
 import { generateCSS } from "./components/generateCSS";
 import { messageHandler } from "./components/messagehandler";
 
-export type ISorted = {
+export type IVariables = {
+  [key: string]: ICollection
+}
+
+export type ICollection = {
   [key: string]: IMode
 }
 
@@ -25,27 +29,31 @@ figma.on("run", async () => {
 
 export async function getFigmaVariables() {
   const variables = await figma.variables.getLocalVariablesAsync(); // Fetch all local variable names
-  const cssVariables: ISorted = {};
+  const exportVars: IVariables = {};
 
   for (const variable of variables) {
     const collection = await figma.variables.getVariableCollectionByIdAsync(variable.variableCollectionId)
     if(!collection){return}
+    console.log("coll", collection)
+    if(!exportVars[collection.name]){
+      exportVars[collection.name] = {}
+    }
 
     Object.keys(variable.valuesByMode).forEach((modeId) => {
       const modeName = collection.modes[collection.modes.findIndex((m)=>{return m.modeId == modeId})].name.replace(/\W+/g, "")
-      if(!cssVariables[modeName]){
-        cssVariables[modeName] = {}
+      if(!exportVars[collection.name][modeName]){
+        exportVars[collection.name][modeName] = {}
       }
       let value: any = variable.valuesByMode[modeId]
       if(variable.resolvedType == 'COLOR'){
         value = rgbaToHex(value)
       }
 
-      cssVariables[modeName][variable.name] = {type: variable.resolvedType, value: value};
+      exportVars[collection.name][modeName][variable.name] = {type: variable.resolvedType, value: value};
     })
   }
 
-  return cssVariables;
+  return exportVars;
 }
 
 function rgbaToHex(rgba: any) {

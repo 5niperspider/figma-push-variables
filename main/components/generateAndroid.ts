@@ -1,8 +1,10 @@
-export function generateAndroid(Variables: any) {
+import { IVariables } from "../code";
+
+export function generateAndroid(Variables: IVariables) {
     console.log(Variables)
     let code = 'val ColorBaseTokens = ColorBase(\n';
   
-  
+
     for (const mode in Variables) {
       code += `\t${mode.toLowerCase()} = ColorBase.${mode}(\n`
       for (const variable in Variables[mode]) {

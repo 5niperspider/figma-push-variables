@@ -1,17 +1,18 @@
-import { ISorted } from "../code";
+import { IVariables } from "../code";
 
-export function generateCSS(cssVariables: ISorted) {
-    console.log(cssVariables)
+export function generateCSS(variables: IVariables): string {
+    console.log(variables)
     let cssCode = ':root {\n';
   
-  
-    for (const mode in cssVariables) {
-      for (const variable in cssVariables[mode]) {
+  for(const collection in variables){
+    for (const mode in variables) {
+      for (const variable in variables[mode]) {
         const varName = variable.split("/").map((string) => string.replace(/\W+/g, "")).join('-')
-        cssCode += `--${mode}-${varName}: ${cssVariables[mode][variable].value};\n`;
+        cssCode += `--${collection}-${mode}-${varName}: ${variables[collection][mode][variable].value};\n`;
       }
     }
+  }
     
     cssCode += '}\n';
-    return cssCode;
-  }
+  return cssCode;
+}
