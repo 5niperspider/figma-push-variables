@@ -4,7 +4,7 @@
 
 <p id="description">This Figma plugin allows designers and developers to export design variables from Figma documents directly into code. Currently the plugin supports exporting variables to CSS and JSON formats. Future updates will include support for XML and Kotlin providing a versatile tool for integrating design and development workflows.</p>
 
-  
+<p align="center"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&amp;logo=figma&amp;logoColor=white" alt="shields"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" alt="shields"><img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&amp;logo=node.js&amp;logoColor=white" alt="shields"><img src=" 	https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&amp;logo=material-ui&amp;logoColor=white" alt="shields"><img src=" 	https://img.shields.io/badge/React-20232A?style=for-the-badge&amp;logo=react&amp;logoColor=61DAFB" alt="shields"></p>
   
 <h2>🧐 Features</h2>
 
