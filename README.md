@@ -1,4 +1,4 @@
-# README
+![Push Variable Logo](https://github.com/5niperspider/figma-push-ariables/blob/master/src/assets/logo.png?raw=true)
 
 ## Push Variable Plugin
 
