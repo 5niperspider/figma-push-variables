@@ -7,6 +7,7 @@ export const GenerateView = () => {
     const pluginContext = usePluginContext()
 
     const onClick = () => {
+      console.log("collections checked: ", pluginContext.collsChecked)
         parent.postMessage({pluginMessage: {type: pluginContext.platform}}, '*')
       }
 

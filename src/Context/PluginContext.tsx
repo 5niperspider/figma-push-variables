@@ -18,6 +18,8 @@ type PluginContextProviderProps = {
   setPlatform: Dispatch<SetStateAction<string>>;
   collections: any[];
   setCollections: Dispatch<SetStateAction<any[]>>;
+  collsChecked: string[];
+  setCollsChecked: Dispatch<SetStateAction<string[]>>;
 };
 
 const PluginContext = createContext<PluginContextProviderProps>(null!);
@@ -28,6 +30,7 @@ export const PluginContextProvider = ({ children }: any) => {
   const [view, setView] = useState<boolean>(false);
   const [platform, setPlatform] = useState<string>("");
   const [collections, setCollections] = useState<any[]>(null!);
+  const [collsChecked, setCollsChecked] = useState<string[]>([]);
 
   const sharedState: any = {
     data,
@@ -39,7 +42,9 @@ export const PluginContextProvider = ({ children }: any) => {
     platform,
     setPlatform,
     collections,
-    setCollections
+    setCollections,
+    collsChecked,
+    setCollsChecked
   };
 
   return (

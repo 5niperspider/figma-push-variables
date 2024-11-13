@@ -5,13 +5,10 @@ import { useEffect, useState } from "react";
 
 export const CollectionSelect = () => {
     const pluginContext = usePluginContext()
-    const [checked, setChecked] = useState(['empty']);
-
-    useEffect(() => {}, [pluginContext.collections]);
 
   const handleToggle = (id: string) => () => {
-    const currentIndex = checked.indexOf(id);
-    const newChecked = [...checked];
+    const currentIndex = pluginContext.collsChecked.indexOf(id);
+    const newChecked = [...pluginContext.collsChecked];
 
     if (currentIndex === -1) {
       newChecked.push(id);
@@ -19,7 +16,7 @@ export const CollectionSelect = () => {
       newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked);
+    pluginContext.setCollsChecked(newChecked);
   };
 
   return (
@@ -37,7 +34,7 @@ export const CollectionSelect = () => {
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  checked={checked.includes(value.id)}
+                  checked={pluginContext.collsChecked.includes(value.id)}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': value.id }}
