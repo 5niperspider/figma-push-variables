@@ -21,6 +21,18 @@ export const MessageHandler = () => {
         pluginContext.setView(true)
         break
       }
+      case 'json': {
+        pluginContext.setType("text/json")
+        pluginContext.setData(message.data)
+        pluginContext.setView(true)
+        break
+      }
+      case 'collections': {
+        console.log("befor setting")
+        pluginContext.setCollections(message.collections)
+        console.log("collections set")
+        break
+      }
       default: {
         console.log(`UI-MessageHandler: messagetype ${msg.type} not supported`)
         break

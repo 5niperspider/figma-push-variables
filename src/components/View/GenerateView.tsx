@@ -1,6 +1,7 @@
 import { Box, Button } from "@mui/material"
 import { PlattformSelect } from "../PlattformSelect"
 import { usePluginContext } from "../../Context/PluginContext"
+import { CollectionSelect } from "../VariableSelect/CollectionSelect"
 
 export const GenerateView = () => {
     const pluginContext = usePluginContext()
@@ -10,6 +11,8 @@ export const GenerateView = () => {
       }
 
     return (
+      <>
+        <CollectionSelect/>
         <Box
           width={"100%"}
           justifyContent="end"
@@ -20,5 +23,6 @@ export const GenerateView = () => {
           <PlattformSelect />
           <Button disabled={pluginContext.platform == ""} style={{height: 40}} variant="contained" onClick={onClick}>Generate</Button>
         </Box>
+      </>
     )
 }

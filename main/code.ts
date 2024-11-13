@@ -25,6 +25,12 @@ figma.ui.onmessage = (msg) => {
 };
 
 figma.on("run", async () => {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync()
+  const col: {name: string, id: string}[] = []
+  collections.forEach((c)=>{
+    col.push({name: c.name, id: c.id})
+  })
+  figma.ui.postMessage({type: 'collections', collections: col});
 });
 
 export async function getFigmaVariables() {

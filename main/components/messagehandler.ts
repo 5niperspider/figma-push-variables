@@ -1,6 +1,7 @@
-import { getFigmaVariables } from "../code";
+import { getFigmaVariables, IVariables } from "../code";
 import { generateAndroid } from "./generateAndroid";
 import { generateCSS } from "./generateCSS";
+import { generateJSON } from "./generateJSON";
 
 export async function messageHandler(msg: any) {
 
@@ -14,6 +15,15 @@ export async function messageHandler(msg: any) {
         break
       }
       figma.ui.postMessage({type: 'css', data: generateCSS(vars)})
+      break
+    }
+    case ("json"): {
+      const vars = await getFigmaVariables()
+      if(!vars){
+        figma.ui.postMessage({type: 'error', error: "json codegen error"})
+        break
+      }
+      figma.ui.postMessage({type: 'json', data: generateJSON(vars)})
       break
     }
     case ("android"): {
